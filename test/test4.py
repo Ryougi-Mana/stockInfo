@@ -1,3 +1,4 @@
+# coding = 'utf-8'
 import time
 import html
 
@@ -13,7 +14,7 @@ def dec(a):
 def dec_r(b):
     # r'\u4eba\u751f\u82e6\u77ed\uff0cpy\u662f\u5cb8'   开头  解码
     # python3 以上 字符串不能 直接 decode， 先编码成utf-8 ， 在进行解码
-    bb = b.encode('utf-8').decode('unicode_escape')
+    bb = b.encode('gb2312').decode('unicode_escape')
     print(bb)
     return bb
 
@@ -35,6 +36,6 @@ if __name__ == '__main__':
 
     dec_r(b)
 
-    d = r'\u58817'
-    e = u'\uea5d'
-    dec_r(e)
+    d = '&#xE273;'
+    # print(int(dec(d)))
+    dec(d)
