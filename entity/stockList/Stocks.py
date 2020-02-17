@@ -5,10 +5,12 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import Index, UniqueConstraint
 
-import datetime
-
+# 连接驱动
 ENGINE = create_engine("mysql+pymysql://root:123@127.0.0.1:3306/stock?charset=utf8mb4", )
-
+# 数据库对话对象
+DBSession = sessionmaker(bind=ENGINE)
+# 数据库对话
+session = DBSession()
 # Base是declarative_base的实例化对象
 Base = declarative_base()
 
@@ -44,5 +46,27 @@ def drop_db():
     Base.metadata.drop_all(ENGINE)
 
 
+# 所有数据一并提交
+def insertPatch(dataList: list):
+    for data in dataList:
+        session.add(data)
+    session.commit()
+
+
+def selectBunchOfCode(startNo, size, market_type):
+    sql = "select codeStr from stocks where market_type = " + str(market_type)
+    sql += " order by codeStr limit "
+    sql += str(startNo) + "," + str(size) + ";"
+    cursor = session.execute(sql)
+    session.commit()
+    result = cursor.fetchall()
+    return list(map(lambda rs: rs._row[0], result))
+
+
+def closeSession():
+    session.close()
+
+
 if __name__ == '__main__':
-    create_db()
+    # create_db()
+    print(selectBunchOfCode(5, 95, 0))

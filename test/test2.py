@@ -1,6 +1,6 @@
 # coding='utf-8
 from bs4 import BeautifulSoup
-import utils
+from utils import utils
 from selenium import webdriver
 
 if __name__ == "__main__":

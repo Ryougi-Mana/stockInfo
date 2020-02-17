@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, scoped_session
-from entity.Stocks import Stocks
+from sqlalchemy.orm import sessionmaker
+from entity.stockList.Stocks import Stocks
 
 ENGINE = create_engine("mysql+pymysql://root:123@127.0.0.1:3306/stock?charset=utf8mb4", )
 DBSession = sessionmaker(bind=ENGINE)
