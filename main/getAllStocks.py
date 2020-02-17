@@ -2,11 +2,11 @@
 import time
 import uuid
 from bs4 import BeautifulSoup
-import utils
+from utils import utils
 
 # 东方财富网股吧地址
-from entity import curd
-from entity.Stocks import Stocks
+from entity.stockList import curd
+from entity.stockList.Stocks import Stocks
 
 URL_base = 'http://guba.eastmoney.com/'
 URL_append = 'remenba.aspx?type=1&tab=1'
