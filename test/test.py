@@ -1,6 +1,6 @@
 # coding='utf-8
 v = None
-import re,uuid
+import re, uuid
 
 
 def fun():
@@ -12,20 +12,19 @@ def fun():
             v = v + 1
     print('v=', v)
 
+
 def cleanHeadZeroNum(string):
     return string.lstrip('0')
 
 
 if __name__ == '__main__':
-
     codeStr = "(umdd)UltraPro MidCap400"
     codeSplict = codeStr.split(")")
     codeSplict2 = codeSplict[0].split("(")
     print(codeSplict[1])
     print(codeSplict2[1])
 
-
-    uuidStr = str(uuid.uuid4()).replace('-','')
+    uuidStr = str(uuid.uuid4()).replace('-', '')
 
     print(uuid.uuid4())
     print(uuidStr)
@@ -34,7 +33,6 @@ if __name__ == '__main__':
     string = "(003251)我的"
     print(re.findall(r"\d+\.?\d*", string))
     print(re.sub("\D", "", string))
-
 
     print(cleanHeadZeroNum("007025"))
     # ['1.45', '5', '6.45', '8.82']
@@ -46,7 +44,7 @@ if __name__ == '__main__':
     market_type = 0
     sql = sql + str(code) + ","
     sql = sql + "'" + name + "',"
-    sql = sql + "'" +market + "',"
+    sql = sql + "'" + market + "',"
     sql = sql + str(market_type)
     sql = sql + ")"
 
